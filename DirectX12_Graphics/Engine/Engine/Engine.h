@@ -2,6 +2,7 @@
 
 #include "Device.h"
 #include "CommandQueue.h"
+#include "ConstantBuffer.h"
 #include "SwapChain.h"
 #include "RootSignature.h"
 #include "../Resource/Mesh.h"
@@ -17,6 +18,7 @@ public:
 	shared_ptr<CommandQueue>	GetCmdQueue()		 { return cmdQueue; }
 	shared_ptr<SwapChain>		GetSwapChain()		 { return swapChain; }
 	shared_ptr<RootSignature>	GetRootSignature()	 { return rootSignature; }
+	shared_ptr<ConstantBuffer>  GetConstantBuffer()  { return cb; }
 public:
 	void RenderBegin();
 	void RenderEnd();
@@ -31,5 +33,6 @@ private:
 	shared_ptr<CommandQueue>	 cmdQueue;
 	shared_ptr<SwapChain>	 	 swapChain;
 	shared_ptr<RootSignature>	 rootSignature;
+	shared_ptr<ConstantBuffer>	 cb;
 };
 
