@@ -167,6 +167,7 @@
     <ClInclude Include="Engine\RootSignature.h" />
     <ClInclude Include="Resource\Mesh.h" />
     <ClInclude Include="Resource\Shader.h" />
+    <ClInclude Include="Engine\TableDescriptorHeap.h" />
     <ClInclude Include="Utils\d3dx12.h" />
     <ClInclude Include="Utils\EnginePch.h" />
     <ClInclude Include="Utils\pch.h" />
@@ -180,6 +181,7 @@
     <ClCompile Include="Engine\RootSignature.cpp" />
     <ClCompile Include="Resource\Mesh.cpp" />
     <ClCompile Include="Resource\Shader.cpp" />
+    <ClCompile Include="Engine\TableDescriptorHeap.cpp" />
     <ClCompile Include="Utils\EnginePch.cpp" />
     <ClCompile Include="Utils\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
