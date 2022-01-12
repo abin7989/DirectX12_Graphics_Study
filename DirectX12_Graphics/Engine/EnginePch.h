@@ -45,18 +45,18 @@ using namespace Microsoft::WRL;
 #endif
 
 // °¢Á¾ typedef
-using int8		= __int8;
-using int16		= __int16;
-using int32		= __int32;
-using int64		= __int64;
-using uint8		= unsigned __int8;
-using uint16	= unsigned __int16;
-using uint32	= unsigned __int32;
-using uint64	= unsigned __int64;
-using Vec2		= XMFLOAT2;
-using Vec3		= XMFLOAT3;
-using Vec4		= XMFLOAT4;
-using Matrix	= XMMATRIX;
+using int8 = __int8;
+using int16 = __int16;
+using int32 = __int32;
+using int64 = __int64;
+using uint8 = unsigned __int8;
+using uint16 = unsigned __int16;
+using uint32 = unsigned __int32;
+using uint64 = unsigned __int64;
+using Vec2 = XMFLOAT2;
+using Vec3 = XMFLOAT3;
+using Vec4 = XMFLOAT4;
+using Matrix = XMMATRIX;
 
 enum class CBV_REGISTER : uint8
 {
@@ -103,13 +103,27 @@ struct Vertex
 	Vec2 uv;
 };
 
+#define DECLARE_SINGLE(type)		\
+private:							\
+	type() {}						\
+	~type() {}						\
+public:								\
+	static type* GetInstance()		\
+	{								\
+		static type instance;		\
+		return &instance;			\
+	}								\
 
+#define GET_SINGLE(type)	type::GetInstance()
 
 #define DEVICE				GEngine->GetDevice()->GetDevice()
 #define CMD_LIST			GEngine->GetCmdQueue()->GetCmdList()
 #define RESOURCE_CMD_LIST	GEngine->GetCmdQueue()->GetResourceCmdList()
 #define ROOT_SIGNATURE		GEngine->GetRootSignature()->GetSignature()
-#define INPUT				GEngine->GetInput()
-#define DELTA_TIME			GEngine->GetTimer()->GetDeltaTime()
-#define CONST_BUFFER(type)  GEngine->GetConstantBuffer(type)
+
+#define INPUT				GET_SINGLE(Input)
+#define DELTA_TIME			GET_SINGLE(Timer)->GetDeltaTime()
+
+#define CONST_BUFFER(type)	GEngine->GetConstantBuffer(type)
+
 extern unique_ptr<class Engine> GEngine;
